@@ -230,6 +230,10 @@ if(isset($_POST['city']) && !empty($_POST['city'])){
 
 			if(isset($name) && isset($blood_group) && isset($gender) && isset($day) && isset($month) && isset($year) && isset($email) && isset($contact) && isset($city) && isset($password)){
 				$DonerDOB = $year."_".$month."_".$day;	
+				
+				$password = md5($password);
+				// md5 password ko string me convert karega 
+
 				$sql = "INSERT INTO donor(name,gender,email,city,dob,contact_no,save_life_date,password) VALUES('$name','$gender','$email','$city','$DonerDOB','$contact','0','$password')";
 		
 				if(mysqli_query($connection , $sql)){
@@ -259,7 +263,7 @@ if(isset($_POST['city']) && !empty($_POST['city'])){
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
-</div>';
+  </div>';
 
 		}
   }
@@ -324,7 +328,7 @@ box-shadow: 0px 2px 5px -2px rgba(89,89,89,0.95);
 				<form class="form-group" action="" method="post" novalidate="">
 					<div class="form-group">
 						<label for="fullname">Full Name</label>
-						<input type="text" name="name" id="fullname" placeholder="Full Name" required pattern="[A-Za-z/\s]+" title="Only lower and upper case and space" class="form-control">
+						<input type="text" name="name" id="fullname" placeholder="Full Name" required pattern="[A-Za-z/\s]+" title="Only lower and upper case and space" class="form-control" value="<?php if(isset($name)) echo $name; ?>">
 						
 						<?php if(isset($nameError)) echo $nameError; ?>
 
@@ -334,6 +338,7 @@ box-shadow: 0px 2px 5px -2px rgba(89,89,89,0.95);
               <label for="name">Blood Group</label><br>
               <select class="form-control demo-default" id="blood_group" name="blood_group" required>
                 <option value="">---Select Your Blood Group---</option>
+				<?php if(isset($blood_group)) echo '<option selected="" value="'.$blood_group.'">'.$blood_group.'</option>'; ?>
                 <option value="A+">A+</option>
                 <option value="A-">A-</option>
                 <option value="B+">B+</option>
@@ -348,15 +353,18 @@ box-shadow: 0px 2px 5px -2px rgba(89,89,89,0.95);
 					<div class="form-group">
 				              <label for="gender">Gender</label><br>
 				              		Male<input type="radio" name="gender" id="gender" value="Male" style="margin-left:10px; margin-right:10px;" checked>
-				              		Fe-male<input type="radio" name="gender" id="gender" value="Fe-male" style="margin-left:10px;">
+				              		Female<input type="radio" name="gender" id="gender" value="Female" style="margin-left:10px;" >
 				    </div><!--gender-->
 					<?php
 					if(isset($genderError)) echo $genderError; 
 					?>
 				    <div class="form-inline">
+						
               <label for="name">Date of Birth</label><br>
               <select class="form-control demo-default" id="date" name="day" style="margin-bottom:10px;" required>
-                <option value="">---Date---</option>
+               
+			  <option value="">---Date---</option>
+			  <?php if(isset($day)) echo '<option selected="" value="'.$day.'">'.$day.'</option>'; ?>
                 <option value="01" >01</option>
 				<option value="02" >02</option>
 				<option value="03" >03</option>
@@ -391,6 +399,7 @@ box-shadow: 0px 2px 5px -2px rgba(89,89,89,0.95);
               </select>
               <select class="form-control demo-default" name="month" id="month" style="margin-bottom:10px;" required>
                 <option value="">---Month---</option>
+				<?php if(isset($month)) echo '<option selected="" value="'.$month.'">'.$month.'</option>'; ?>
                 <option value="01" >January</option>
 				<option value="02" >February</option>
 				<option value="03" >March</option>
@@ -406,6 +415,7 @@ box-shadow: 0px 2px 5px -2px rgba(89,89,89,0.95);
               </select>
               <select class="form-control demo-default" id="year" name="year" style="margin-bottom:10px;" required>
                 <option value="">---Year---</option>
+				<?php if(isset($year)) echo '<option selected="" value="'.$year.'">'.$year.'</option>'; ?>
                 <option value="1957" >1957</option>
 				<option value="1958" >1958</option>
 				<option value="1959" >1959</option>
@@ -457,12 +467,12 @@ box-shadow: 0px 2px 5px -2px rgba(89,89,89,0.95);
 			
 				    <div class="form-group">
 						<label for="fullname">Email</label>
-						<input type="text" name="email" id="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Please write correct email" class="form-control">
+						<input type="text" name="email" id="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Please write correct email" class="form-control" value="<?php if(isset($email)) echo $email; ?>">
 					</div>
 					<?php if(isset($emailError)) echo $emailError; ?>
 					<div class="form-group">
               <label for="contact_no">Contact No</label>
-              <input type="text" name="contact_no" value="" placeholder="03********" class="form-control" required pattern="^\d{11}$" title="11 numeric characters only" maxlength="11">
+              <input type="text" name="contact_no" placeholder="03********" class="form-control" required pattern="^\d{11}$" title="11 numeric characters only" maxlength="11" value="<?php if(isset($contact)) echo $contact; ?>">
 			  <?php if(isset($contactError)) echo $contactError; ?>
 			</div><!--End form-group-->
 			
@@ -470,6 +480,7 @@ box-shadow: 0px 2px 5px -2px rgba(89,89,89,0.95);
               <label for="city">City</label>
               <select name="city" id="city" class="form-control demo-default" required>
 	<option value="">-- Select --</option>
+	<?php if(isset($city)) echo '<option selected="" value="'.$city.'">'.$city.'</option>'; ?>
 	<optgroup title="Azad Jammu and Kashmir (Azad Kashmir)" label="&raquo; Azad Jammu and Kashmir (Azad Kashmir)"></optgroup>
 	<option value="Bhopal" >Bhopal</option>
 	<option value="Bhimber" >Bhimber</option>
@@ -600,7 +611,7 @@ box-shadow: 0px 2px 5px -2px rgba(89,89,89,0.95);
 			</div><!--End form-group-->
 			
             <div class="form-inline">
-              <input type="checkbox" name="term" value="true" required style="margin-left:10px;">
+              <input checked="" type="checkbox" name="term" value="true" required style="margin-left:10px;">
               <span style="margin-left:10px;"><b>I am agree to donate my blood and show my Name, Contact Nos. and E-Mail in Blood donors List</b></span>
             </div><!--End form-group-->
 			
