@@ -2,7 +2,7 @@
   //include header file
   include ('include/header.php');
 
-  if(isset($_POST['submit'])){
+  if(isset($_POST['submit']))
 	if(isset ($_POST['term'])=== true){
 		if(isset($_POST['name']) && !empty($_POST['name'])){
 			if(preg_match('/^[A-Za-z\s]+S/', $_POST['name'])){
@@ -91,7 +91,7 @@ if(isset($_POST['blood_group']) && !empty($_POST['blood_group'])){
 </div>';
 
 		}
-		// --------------city---------------------
+		// --------------contact no---------------------
 
 		if(isset($_POST['contact_no']) && !empty($_POST['contact_no'])){
 			if(preg_match('/\d{11}/', $_POST['contact_no'])){
@@ -176,7 +176,51 @@ if(isset($_POST['blood_group']) && !empty($_POST['blood_group'])){
   </button>
 </div>';
 	}
+
+	// ---------------------------email-------------
+
+	if(isset($_POST['email']) && !empty($_POST['email'])){
+			$pattern = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
+
+		if(preg_match($pattern, $_POST['email'])){
+
+				$check_email = $_POST['email'];
+
+				$sql = "SELECT email FROM donor WHERE email = '$check_email'";
+
+				$result = mysqli_query($connection,$sql);
+					if(mysql_num_rows($result)>0){
+
+						$emailError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
+						<strong>Sorry this email is allready exist</strong>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+						</button>
+						</div>';
+					
+				}else{
+						$email = $_POST['email'];
+				}
+
+		}else{
+			$emailError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
+<strong>Please enter valid email address</strong>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>';
+		}
+	}else{
+		$cityError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
+<strong>Please fill the email fild. </strong>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>';
+
+	}
   }
+
 ?>
 
 <style>
@@ -234,9 +278,9 @@ box-shadow: 0px 2px 5px -2px rgba(89,89,89,0.95);
 					<div class="form-group">
 						<label for="fullname">Full Name</label>
 						<input type="text" name="name" id="fullname" placeholder="Full Name" required pattern="[A-Za-z/\s]+" title="Only lower and upper case and space" class="form-control">
-						<?php
-					if(isset($nameError)) echo $nameError; 
-					?>
+						
+						<?php if(isset($nameError)) echo $nameError; ?>
+						
 					</div><!--full name-->
 
 					<div class="form-group">
