@@ -19,7 +19,7 @@
 						<h1 class="text-center">Search The Donors</h1>
 						<hr class="white-bar text-center">
 
-						<form action="#" method="get" class="form-inline text-center" style="padding: 40px 0px 0px 5px;">
+						<form action="search.php" method="get" class="form-inline text-center" style="padding: 40px 0px 0px 5px;">
 							<div class="form-group text-center justify-content-center">
 							
 								<select style="width: 220px; height: 45px;" name="city" id="city" class="form-control demo-default" required>
