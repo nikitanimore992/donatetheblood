@@ -36,7 +36,15 @@
 	</head>
 <?php 
     
-   
+   include 'config.php';
+   session_start();
+
+   if(isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])){
+
+    include('include/usernav.php'); 
+
+   }else{
     include('include/navigation.php'); 
+   }
 
 ?>

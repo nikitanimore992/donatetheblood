@@ -52,11 +52,23 @@
 			<h2 class="text-center">Our Vission</h2>
 			<hr class="red-bar">
 			<p>
-				We are a group of exceptional programmers; our aim is to promote education. If you are a student, then contact us to secure your future. We deliver free international standard video lectures and content. We are also providing services in Web & Software Development.
-			</p>
+			The system provides a high-end ,efficient, highly 
+   available and scalable  system to bridge the gap 
+   Between the donors and recipients .There are several type of report that can been 
+   generated  such as blood stock report .
+   The system also give the information to the donor 
+   About blood. 
+	
+		</p>
 			<p>
-				We are a group of exceptional programmers; our aim is to promote education. If you are a student, then contact us to secure your future. We deliver free international standard video lectures and content. We are also providing services in Web & Software Development.
-			</p>
+			The system provides a high-end ,efficient, highly 
+   available and scalable  system to bridge the gap 
+   Between the donors and recipients .There are several type of report that can been 
+   generated  such as blood stock report .
+   The system also give the information to the donor 
+   About blood. 
+	
+		</p>
 		</div>
 	</div>
 	</div>
@@ -70,11 +82,23 @@
 			<h2 class="text-center">Our Goal</h2>
 			<hr class="red-bar">
 			<p>
-				We are a group of exceptional programmers; our aim is to promote education. If you are a student, then contact us to secure your future. We deliver free international standard video lectures and content. We are also providing services in Web & Software Development.
-			</p>
+		This web based  application provides :
+								To ensure hospital to have  good  supply and 
+     inventory of blood bags.
+	 To manage the  information of   its blood  donor.
+    Function to check  if the person donate blood 
+    for its 3 months .To provide immediate storage and retrieval of 
+    Data and information.
+		</p>
 			<p>
-				We are a group of exceptional programmers; our aim is to promote education. If you are a student, then contact us to secure your future. We deliver free international standard video lectures and content. We are also providing services in Web & Software Development.
-			</p>
+			This web based  application provides :
+								To ensure hospital to have  good  supply and 
+     inventory of blood bags.
+	 To manage the  information of   its blood  donor.
+    Function to check  if the person donate blood 
+    for its 3 months .To provide immediate storage and retrieval of 
+    Data and information.	
+		</p>
 		</div>
 		<div ><img src="img/target.png" alt="Our Vission" class="rounded img-fluid float-right"></div>
 	</div>
@@ -91,11 +115,21 @@
 			<h2 class="text-center">Our Mission</h2>
 			<hr class="red-bar">
 			<p>
-				We are a group of exceptional programmers; our aim is to promote education. If you are a student, then contact us to secure your future. We deliver free international standard video lectures and content. We are also providing services in Web & Software Development.
-			</p>
+			The future of blood bank management system(lives)in 
+  using new  technologies  and   innovative  approaches 
+  to  improve  patient care  and  blood  bank practices.
+  This research  study  does not cover  the actual 
+   blood collection  activity , And  actual  blood 
+   transfusion  operation.	
+		</p>
 			<p>
-				We are a group of exceptional programmers; our aim is to promote education. If you are a student, then contact us to secure your future. We deliver free international standard video lectures and content. We are also providing services in Web & Software Development.
-			</p>
+			The future of blood bank management system(lives)in 
+  using new  technologies  and   innovative  approaches 
+  to  improve  patient care  and  blood  bank practices.
+  This research  study  does not cover  the actual 
+   blood collection  activity , And  actual  blood 
+   transfusion  operation.	
+		</p>
 		</div>
 	</div>
 	</div>

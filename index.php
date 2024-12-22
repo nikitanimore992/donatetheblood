@@ -191,10 +191,34 @@
 						<h1 class="text-center"  style="color: white; font-weight: 700;padding: 10px 0 0 0;">Donate The Blood</h1>
 						<hr class="white-bar">
 						<p class="text-center pera-text">
-							We are a group of exceptional programmers; our aim is to promote education. If you are a student, then contact us to secure your future. We deliver free international standard video lectures and content. We are also providing services in Web & Software Development.
+						Blood bank management  system is designed for 
+      the blood  bank  to gather  blood  from various  
+      Sources and  distribute it to needy  people who have 
+      high  requirements  for  it.
+	  is designed to handle  daily
+      transactions  of  the blood  bank  and  search the 
+      details  when  required.
+	  For instance,when a person needs a certain type
+        of  blood  and this type is not available in the 
+        hospital, Family members and messages through  
+        social media to those who can donate to them 
+        seems that  there is lack of proper documentation
+        process  takes longer  than the life of patient to the 
+        most dangerous .
+		There are several type of report that can been 
+   generated  such as blood stock report .
 
-							We are a group of exceptional programmers; our aim is to promote education. If you are a student, then contact us to secure your future. We deliver free international standard video lectures and content. We are also providing services in Web & Software Development.
-						</p>
+   For instance,when a person needs a certain type
+        of  blood  and this type is not available in the 
+        hospital, Family members and messages through  
+        social media to those who can donate to them 
+        seems that  there is lack of proper documentation
+        process  takes longer  than the life of patient to the 
+        most dangerous .
+		There are several type of report that can been 
+   generated  such as blood stock report .
+		
+					</p>
 						<a href="#" class="btn btn-default btn-lg text-center center-aligned">Become a Life Saver!</a>
 					</div>
 				</div>
@@ -209,8 +233,14 @@
      						<h3 class="text-center red">Our Vission</h3>
 								<img src="img/binoculars.png" alt="Our Vission" class="img img-responsive" width="168" height="168">
 								<p class="text-center">
-									We are a group of exceptional programmers; our aim is to promote education. If you are a student, then contact us to secure your future. We deliver free international standard video lectures and content. We are also providing services in Web & Software Development.
-								</p>
+								The system provides a high-end ,efficient, highly 
+   available and scalable  system to bridge the gap 
+   Between the donors and recipients .There are several type of report that can been 
+   generated  such as blood stock report .
+   The system also give the information to the donor 
+   About blood. 
+
+	</p>
 						</div>
     				</div>
     				
@@ -219,8 +249,15 @@
       							<h3 class="text-center red">Our Goal</h3>
 								<img src="img/target.png" alt="Our Vission" class="img img-responsive" width="168" height="168">
 								<p class="text-center">
-									We are a group of exceptional programmers; our aim is to promote education. If you are a student, then contact us to secure your future. We deliver free international standard video lectures and content. We are also providing services in Web & Software Development.
-								</p>
+								This web based  application provides :
+								To ensure hospital to have  good  supply and 
+     inventory of blood bags.
+	 To manage the  information of   its blood  donor.
+    Function to check  if the person donate blood 
+    for its 3 months .To provide immediate storage and retrieval of 
+    Data and information.
+
+							</p>
 						</div>
     				</div>
     			
@@ -229,8 +266,13 @@
       						<h3 class="text-center red">Our Mission</h3>
 								<img src="img/goal.png" alt="Our Vission" class="img img-responsive" width="168" height="168">
 								<p class="text-center">
-									We are a group of exceptional programmers; our aim is to promote education. If you are a student, then contact us to secure your future. We deliver free international standard video lectures and content. We are also providing services in Web & Software Development.
-								</p>
+								The future of blood bank management system(lives)in 
+  using new  technologies  and   innovative  approaches 
+  to  improve  patient care  and  blood  bank practices.
+  This research  study  does not cover  the actual 
+   blood collection  activity , And  actual  blood 
+   transfusion  operation.	
+							</p>
 							</div>
    			 		</div>
  			</div>
