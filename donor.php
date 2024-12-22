@@ -65,7 +65,7 @@
 </div>
 
 
-	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+	<!-- <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>Are you delete this record?</strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -79,20 +79,56 @@
                 <span aria-hidden="true">Oops! No </span>
                 </button>      
             </form>
-     </div>
+     </div> -->
 
-     <br>
+     <!-- <br>
 
      <div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>Message</strong>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
-</div>
+</div> -->
 
 <div class="container" style="padding: 60px 0;">
 	<div class="row data">
-		
+		<?php 
+		$sql = "SELECT * FROM donor";
+		$result = mysqli_query($connection , $sql);
+		if(mysqli_num_rows($result)>0){
+
+			while($row = mysqli_fetch_assoc($result)){
+				if($row['save_life_date']=='0'){
+					echo '<div class="col-md-3 col-sm-12 col-lg-3 donors_data" >
+					<span class="name">'.$row['name'].'</span>
+					<span>'.$row['city'].'</span>
+					<span>'.$row['blood_group'].'</span>
+					<span>'.$row['gender'].'</span>
+					<span>'.$row['email'].'</span>
+					<span>'.$row['contact_no'].'</span>
+					<span>'.$row['name'].'</span>
+					<span>'.$row['name'].'</span>
+					</div>';
+				}else{
+						echo '<div class="col-md-3 col-sm-12 col-lg-3 donors_data" >
+						<span class="name">'.$row['name'].'</span>
+						<span>'.$row['city'].'</span>
+						<span>'.$row['blood_group'].'</span>
+						<span>'.$row['gender'].'</span>
+						<h4 class="name text-center">Doneted</h4>
+						</div>';
+				}
+			}
+
+		}else{
+			echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Data Not found</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+		}
+		?>
 
 
 	</div>

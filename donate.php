@@ -191,7 +191,7 @@ if(isset($_POST['city']) && !empty($_POST['city'])){
 
 				$sql = "SELECT email FROM donor WHERE email = '$check_email' ";
 
-				$result = mysqli_query($connection,$sql);
+				$result = mysqli_query($connection, $sql);
 					if(mysqli_num_rows($result)>0){
 
 						$emailError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
@@ -223,10 +223,14 @@ if(isset($_POST['city']) && !empty($_POST['city'])){
 
 	}
 
-	// email input chack---------------
-			if(isset($name) && isset($blood_group) && ($gender) && ($day) && ($month) && ($year) && ($email) && ($contact) && ($city) && ($password)){
+	// submit input chack---------------
+
+
+
+
+			if(isset($name) && isset($blood_group) && isset($gender) && isset($day) && isset($month) && isset($year) && isset($email) && isset($contact) && isset($city) && isset($password)){
 				$DonerDOB = $year."_".$month."_".$day;	
-				$sql = "INSERT INTO $donor (name,gender,email,city,dob,contact_no,save_life_date,password) VALUES('$name','$gender','$email','$city','$DonerDOB','$contact','0','$password')";
+				$sql = "INSERT INTO donor(name,gender,email,city,dob,contact_no,save_life_date,password) VALUES('$name','$gender','$email','$city','$DonerDOB','$contact','0','$password')";
 		
 				if(mysqli_query($connection , $sql)){
 					$submitSuccess =  '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -251,7 +255,7 @@ if(isset($_POST['city']) && !empty($_POST['city'])){
 
 }else{
 	$termError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
-  <strong>please agree with our turms and conditions </strong>
+  <strong>please agree with our terms and conditions </strong>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -317,7 +321,7 @@ box-shadow: 0px 2px 5px -2px rgba(89,89,89,0.95);
 					
           <!-- Error Messages -->
 
-				<form class="form-group" action="" method="post">
+				<form class="form-group" action="" method="post" novalidate="">
 					<div class="form-group">
 						<label for="fullname">Full Name</label>
 						<input type="text" name="name" id="fullname" placeholder="Full Name" required pattern="[A-Za-z/\s]+" title="Only lower and upper case and space" class="form-control">
