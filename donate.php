@@ -1,274 +1,43 @@
+
+
 <?php 
-  //include header file
-  include ('include/header.php');
+ //include header file
+ include ('include/header.php');
 
-  if(isset($_POST['submit'])){
-	if(isset ($_POST['term'])=== true){
-
-		// name input chack---------------
-
-		if(isset($_POST['name']) && !empty($_POST['name'])){
-			if(preg_match('/^[A-Za-z\s]+S/', $_POST['name'])){
-
-					$name = $_POST['name'];
-
-			}
-			else{
-				$nameError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
-                               <strong>Only lower and upper case and space.</strong>
-  							   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							   <span aria-hidden="true">&times;</span>
-  							   </button>
-						</div>';
-			}
-		}else
-			{
-			$nameError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
- 							 <strong>Please fill the name fild. </strong>
- 							 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  						     <span aria-hidden="true">&times;</span>
-  							 </button>
-						</div>';
-
-			}
-
-		// gender input chack---------------
-		if(isset($_POST['gender']) && !empty($_POST['gender'])){
-			$gender = $_POST['gender'];
-		}else{
-			$genderError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
-  <strong>Select gender</strong>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>';
-
-		}
-		// day input chack---------------
-		if(isset($_POST['day']) && !empty($_POST['day'])){
-			$day = $_POST['day'];
-		}else{
-			$dayError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
-  <strong>Select day</strong>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>';
-		}
-// month input chack---------------
-if(isset($_POST['month']) && !empty($_POST['month'])){
-	$month = $_POST['month'];
-}else{
-	$monthError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
-<strong>Choose month</strong>
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>';
-
-		}
-
-// year input chack---------------
-if(isset($_POST['year']) && !empty($_POST['year'])){
-	$year = $_POST['year'];
-}else{
-	$yearError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
-<strong>Select Year input</strong>
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>';
-
-		}
-
-// BLOOD input chack---------------
-if(isset($_POST['blood_group']) && !empty($_POST['blood_group'])){
-	$blood_group = $_POST['blood_group'];
-}else{
-	$blood_groupError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
-<strong>Select blood_group input</strong>
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>';
-
-		}
-
-// City input chack---------------
-
-if(isset($_POST['city']) && !empty($_POST['city'])){
-	if(preg_match('/^[A-Za-z\s]+S/', $_POST['city'])){
-
-			$city = $_POST['city'];
-
-	}else{
-		$cityError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
-<strong>Only lower and upper case and space.</strong>
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>';
-	}
-}else{
-	$cityError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
-<strong>Please fill the city fild. </strong>
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>';
+if (isset($_POST["submit"]))
+{
+  $name=$_POST["name"];
+  $blood_group=$_POST["blood_group"];
+  $gender=$_POST["gender"];
+  $day=$_POST["day"];
+  $month=$_POST["month"];
+  $year=$_POST["year"];
+  $email=$_POST["email"];
+  $contact_no=$_POST["contact_no"];
+  $city=$_POST["city"];
+  $password=$_POST["password"];
 
 }
-// contact input chack---------------
+?>
 
-		if(isset($_POST['contact_no']) && !empty($_POST['contact_no'])){
-			if(preg_match('/\d{11}/', $_POST['contact_no'])){
+<?php
+ if (isset($_POST["submit"]))
+ {
 
-					$contact = $_POST['contact_no'];
+  $con=new mysqli("localhost", "root", "", "donatetheblood");
+  $DonerDOB = $year."_".$month."_".$day;	
+  $password = md5($password);
+  $sql="insert into donor(name,gender,email,city,dob,contact_no,save_life_date,password,blood_group)  
+  values('$name','$gender','$email','$city','$DonerDOB','$contact_no','0','$password', '$blood_group') ";
+  $con->query($sql);
+  $con->close();
 
-			}else{
-				$contactError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
-  <strong>conatct should consider only 11 character</strong>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>';
-			}
-		}else{
-			$contactError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
-  <strong>Please fill the contact nomber fild. </strong>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>';
+  echo "<script>";
+  echo "alert('Record Save!!!')";
+  echo "</script>";
+ }
 
-		}
-
-// password input chack---------------
-
-		if(isset($_POST['password'])&& !empty($_POST['password']) && isset($_POST['c_password'])&& !empty($_POST['c_password'])){
-			if(strlen($_POST['password'])>=6){
-					if($_POST['password'] == $_POST['c_password'] )
-					{
-							$password = $_POST['password'];
-					}else{
-						$passwordError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
-  <strong>conform password is not same</strong>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>';
-					}
-
-				}
-				else{
-		$passwordError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
-  <strong>Please fill password filled </strong>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>';
-	}
-
-
-
-	}else{
-		$passwordError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
-  <strong>Please agree with our terms and conditions. </strong>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>';
-	}
-
-// email input chack---------------
-
-	if(isset($_POST['email']) && !empty($_POST['email'])){
-			$pattern = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
-
-		if(preg_match($pattern, $_POST['email'])){
-
-				$check_email = $_POST['email'];
-
-				$sql = "SELECT email FROM donor WHERE email = '$check_email' ";
-
-				$result = mysqli_query($connection, $sql);
-					if(mysqli_num_rows($result)>0){
-
-						$emailError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
-						<strong>Sorry this email is allready exist</strong>
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-						</button>
-						</div>';
-					
-				}else{
-						$email = $_POST['email'];
-				}
-
-		}else{
-			$emailError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
-<strong>Please enter valid email address</strong>
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>';
-		}
-	}else{
-		$emailError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
-<strong>Please fill the email fild. </strong>
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>';
-
-	}
-
-	// submit input chack---------------
-
-
-
-
-			if(isset($name) && isset($blood_group) && isset($gender) && isset($day) && isset($month) && isset($year) && isset($email) && isset($contact) && isset($city) && isset($password)){
-				$DonerDOB = $year."_".$month."_".$day;	
-				
-				$password = md5($password);
-				// md5 password ko string me convert karega 
-
-				$sql = "INSERT INTO donor(name,gender,email,city,dob,contact_no,save_life_date,password) VALUES('$name','$gender','$email','$city','$DonerDOB','$contact','0','$password')";
-		
-				if(mysqli_query($connection , $sql)){
-					$submitSuccess =  '<div class="alert alert-success alert-dismissible fade show" role="alert">
-<strong>Data inserted Successfully</strong>
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>';
-
-				}else{
-					$submitError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
-					<strong>Oops Data not inserted directly </strong>
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-					</button>
-					</div>';
-				}
-			}
-
-	// email input chack---------------	
-
-
-}else{
-	$termError =  '<div class="alert alert-denger alert-dismissible fade show" role="alert">
-  <strong>please agree with our terms and conditions </strong>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  </div>';
-
-		}
-  }
-
-
+   
 ?>
 
 <style>
@@ -315,30 +84,22 @@ box-shadow: 0px 2px 5px -2px rgba(89,89,89,0.95);
 	<div class="row">
 		<div class="col-md-6 offset-md-3 form-container">
 					<h3>SignUp</h3>
-					<hr class="red-bar">
-					<?php
-					if(isset($termError)) echo $termError; 
-						if(isset($submitSuccess)) echo $submitSuccess;
-						if(isset($submitError)) echo $submitError;
-
-					?>
-					
+					<hr class="red-bar">				
           <!-- Error Messages -->
 
 				<form class="form-group" action="" method="post" novalidate="">
 					<div class="form-group">
 						<label for="fullname">Full Name</label>
-						<input type="text" name="name" id="fullname" placeholder="Full Name" required pattern="[A-Za-z/\s]+" title="Only lower and upper case and space" class="form-control" value="<?php if(isset($name)) echo $name; ?>">
+						<input type="text" name="name" id="fullname" placeholder="Full Name" required pattern="[A-Za-z/\s]+" title="Only lower and upper case and space" class="form-control">
 						
-						<?php if(isset($nameError)) echo $nameError; ?>
-
-					</div><!--full name-->
+					</div>
+					<!--full name-->
 
 					<div class="form-group">
               <label for="name">Blood Group</label><br>
               <select class="form-control demo-default" id="blood_group" name="blood_group" required>
                 <option value="">---Select Your Blood Group---</option>
-				<?php if(isset($blood_group)) echo '<option selected="" value="'.$blood_group.'">'.$blood_group.'</option>'; ?>
+				
                 <option value="A+">A+</option>
                 <option value="A-">A-</option>
                 <option value="B+">B+</option>
@@ -349,22 +110,19 @@ box-shadow: 0px 2px 5px -2px rgba(89,89,89,0.95);
                 <option value="AB-">AB-</option>
               </select>
             </div><!--End form-group-->
-			<?php if(isset($blood_groupError)) echo $blood_groupError; ?>
+			
 					<div class="form-group">
 				              <label for="gender">Gender</label><br>
 				              		Male<input type="radio" name="gender" id="gender" value="Male" style="margin-left:10px; margin-right:10px;" checked>
 				              		Female<input type="radio" name="gender" id="gender" value="Female" style="margin-left:10px;" >
 				    </div><!--gender-->
-					<?php
-					if(isset($genderError)) echo $genderError; 
-					?>
+					
 				    <div class="form-inline">
 						
               <label for="name">Date of Birth</label><br>
               <select class="form-control demo-default" id="date" name="day" style="margin-bottom:10px;" required>
                
 			  <option value="">---Date---</option>
-			  <?php if(isset($day)) echo '<option selected="" value="'.$day.'">'.$day.'</option>'; ?>
                 <option value="01" >01</option>
 				<option value="02" >02</option>
 				<option value="03" >03</option>
@@ -399,7 +157,7 @@ box-shadow: 0px 2px 5px -2px rgba(89,89,89,0.95);
               </select>
               <select class="form-control demo-default" name="month" id="month" style="margin-bottom:10px;" required>
                 <option value="">---Month---</option>
-				<?php if(isset($month)) echo '<option selected="" value="'.$month.'">'.$month.'</option>'; ?>
+				
                 <option value="01" >January</option>
 				<option value="02" >February</option>
 				<option value="03" >March</option>
@@ -415,15 +173,7 @@ box-shadow: 0px 2px 5px -2px rgba(89,89,89,0.95);
               </select>
               <select class="form-control demo-default" id="year" name="year" style="margin-bottom:10px;" required>
                 <option value="">---Year---</option>
-				<?php if(isset($year)) echo '<option selected="" value="'.$year.'">'.$year.'</option>'; ?>
-                <option value="1957" >1957</option>
-				<option value="1958" >1958</option>
-				<option value="1959" >1959</option>
-				<option value="1960" >1960</option>
-				<option value="1961" >1961</option>
-				<option value="1962" >1962</option>
-				<option value="1963" >1963</option>
-				<option value="1964" >1964</option>
+			
 				<option value="1965" >1965</option>
 				<option value="1966" >1966</option>
 				<option value="1967" >1967</option>
@@ -459,147 +209,80 @@ box-shadow: 0px 2px 5px -2px rgba(89,89,89,0.95);
 				<option value="1997" >1997</option>
 				<option value="1998" >1998</option>
 				<option value="1999" >1999</option>
+				<option value="2001" >2001</option>
+				<option value="2002" >2002</option>
+				<option value="2003" >2003</option>
+				<option value="2004" >2004</option>
+				<option value="2005" >2005</option>
+				<option value="2006" >2006</option>
+				<option value="2007" >2007</option>
+				<option value="2008" >2008</option>
+				<option value="2009" >2009</option>
+				<option value="2010" >2010</option>
+				<option value="2011" >2011</option>
+				<option value="2012" >2012</option>
+				<option value="2013" >2013</option>
+				<option value="2014" >2014</option>
+				<option value="2015" >2015</option>
               </select>
-			  <?php if(isset($dayError)) echo $dayError; ?>
-			<?php if(isset($monthError)) echo $monthError; ?>
-			<?php if(isset($yearError)) echo $yearError; ?>
+		
             </div><!--End form-group-->
 			
 				    <div class="form-group">
 						<label for="fullname">Email</label>
-						<input type="text" name="email" id="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Please write correct email" class="form-control" value="<?php if(isset($email)) echo $email; ?>">
+						<input type="text" name="email" id="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Please write correct email" class="form-control">
 					</div>
-					<?php if(isset($emailError)) echo $emailError; ?>
+					
 					<div class="form-group">
               <label for="contact_no">Contact No</label>
-              <input type="text" name="contact_no" placeholder="03********" class="form-control" required pattern="^\d{11}$" title="11 numeric characters only" maxlength="11" value="<?php if(isset($contact)) echo $contact; ?>">
-			  <?php if(isset($contactError)) echo $contactError; ?>
+              <input type="text" name="contact_no" placeholder="03********" class="form-control" required pattern="^\d{11}$" title="11 numeric characters only" maxlength="11">
+			
 			</div><!--End form-group-->
 			
 					<div class="form-group">
               <label for="city">City</label>
               <select name="city" id="city" class="form-control demo-default" required>
 	<option value="">-- Select --</option>
-	<?php if(isset($city)) echo '<option selected="" value="'.$city.'">'.$city.'</option>'; ?>
-	<optgroup title="Azad Jammu and Kashmir (Azad Kashmir)" label="&raquo; Azad Jammu and Kashmir (Azad Kashmir)"></optgroup>
-	<option value="Bhopal" >Bhopal</option>
-	<option value="Bhimber" >Bhimber</option>
-	<option value="Kotli" >Kotli</option>
-	<option value="Mirpur" >Mirpur</option>
-	<option value="Muzaffarabad" >Muzaffarabad</option>
-	<option value="Neelum" >Neelum</option>
-	<option value="Poonch" >Poonch</option>
-	<option value="Sudhnati" >Sudhnati</option>
-	<optgroup title="Balochistan" label="&raquo; Balochistan"></optgroup>
-	<option value="Awaran" >Awaran</option>
-	<option value="Barkhan" >Barkhan</option>
-	<option value="Bolan" >Bolan</option>
-	<option value="Chagai" >Chagai</option>
-	<option value="Dera Bugti" >Dera Bugti</option>
-	<option value="Gwadar" >Gwadar</option>
-	<option value="Jafarabad" >Jafarabad</option>
-	<option value="Jhal Magsi" >Jhal Magsi</option>
-	<option value="Kalat" >Kalat</option>
-	<option value="Kech" >Kech</option>
-	<option value="Kharan" >Kharan</option>
-	<option value="Khuzdar" >Khuzdar</option>
-	<option value="Kohlu" >Kohlu</option>
-	<option value="Lasbela" >Lasbela</option>
-	<option value="Loralai" >Loralai</option>
-	<option value="Mastung" >Mastung</option>
-	<option value="Musakhel" >Musakhel</option>
-	<option value="Naseerabad" >Naseerabad</option>
-	<option value="Nushki" >Nushki</option>
-	<option value="Panjgur" >Panjgur</option>
-	<option value="Pishin" >Pishin</option>
-	<option value="Qilla Abdullah" >Qilla Abdullah</option>
-	<option value="Qilla Saifullah" >Qilla Saifullah</option>
-	<option value="Quetta" >Quetta</option>
-	<option value="Sibi" >Sibi</option>
-	<option value="Zhob" >Zhob</option>
-	<option value="Ziarat" >Ziarat</option>
-	<optgroup title="Federally Administered Tribal Areas (FATA" label="&raquo; Federally Administered Tribal Areas (FATA"></optgroup>
-	<option value="Bajaur Agency" >Bajaur Agency</option>
-	<option value="Khyber Agency" >Khyber Agency</option>
-	<option value="Kurram Agency" >Kurram Agency</option>
-	<option value="Mohmand Agency" >Mohmand Agency</option>
-	<option value="North Waziristan Agency" >North Waziristan Agency</option>
-	<option value="Orakzai Agency" >Orakzai Agency</option>
-	<option value="South Waziristan Agency" >South Waziristan Agency</option>
-	<optgroup title="Islamabad Capital" label="&raquo; Islamabad Capital"></optgroup>
-	<option value="Islamabad" >Islamabad</option>
-	<optgroup title="North-West Frontier Province (NWFP)" label="&raquo; North-West Frontier Province (NWFP)"></optgroup>
-	<option value="Abbottabad" >Abbottabad</option>
-	<option value="Bannu" >Bannu</option>
-	<option value="Batagram" >Batagram</option>
-	<option value="Buner" >Buner</option>
-	<option value="Charsadda" >Charsadda</option>
-	<option value="Chitral" >Chitral</option>
-	<option value="Dera Ismail Khan" >Dera Ismail Khan</option>
-	<option value="Dir Lower" >Dir Lower</option>
-	<option value="Dir Upper" >Dir Upper</option>
-	<option value="Hangu" >Hangu</option>
-	<option value="Haripur" >Haripur</option>
-	<option value="Karak" >Karak</option>
-	<option value="Kohat" >Kohat</option>
-	<option value="Kohistan" >Kohistan</option>
-	<option value="Lakki Marwat" >Lakki Marwat</option>
-	<option value="Malakand" >Malakand</option>
-	<option value="Mansehra" >Mansehra</option>
-	<option value="Mardan" >Mardan</option>
-	<option value="Nowshera" >Nowshera</option>
-	<option value="Peshawar" >Peshawar</option>
-	<option value="Shangla" >Shangla</option>
-	<option value="Swabi" >Swabi</option>
-	<option value="Swat" >Swat</option>
-	<option value="Tank" >Tank</option>
-	<optgroup title="Punjab" label="&raquo; Punjab"></optgroup>
-	<option value="Alipur" >Alipur</option>
-	<option value="Attock" >Attock</option>
-	<option value="Bahawalnagar" >Bahawalnagar</option>
-	<option value="Bahawalpur" >Bahawalpur</option>
-	<option value="Bhakkar" >Bhakkar</option>
-	<option value="Chakwal" >Chakwal</option>
-	<option value="Chiniot" >Chiniot</option>
-	<option value="Dera Ghazi Khan" >Dera Ghazi Khan</option>
-	<option value="Faisalabad" >Faisalabad</option>
-	<option value="Gujranwala" >Gujranwala</option>
-	<option value="Gujrat" >Gujrat</option>
-	<option value="Hafizabad" >Hafizabad</option>
-	<option value="Jhang" >Jhang</option>
-	<option value="Jhelum" >Jhelum</option>
-	<option value="Kasur" >Kasur</option>
-	<option value="Khanewal" >Khanewal</option>
-	<option value="Khushab" >Khushab</option>
-	<option value="Lahore" >Lahore</option>
-	<option value="Layyah" >Layyah</option>
-	<option value="Lodhran" >Lodhran</option>
-	<option value="Mandi Bahauddin" >Mandi Bahauddin</option>
-	<option value="Mianwali" >Mianwali</option>
-	<option value="Multan" >Multan</option>
-	<option value="Muzaffargarh" >Muzaffargarh</option>
-	<option value="Nankana Sahib" >Nankana Sahib</option>
-	<option value="Narowal" >Narowal</option>
-	<option value="Okara" >Okara</option>
-	<option value="Pakpattan" >Pakpattan</option>
-	<option value="Rahim Yar Khan" >Rahim Yar Khan</option>
-	<option value="Rajanpur" >Rajanpur</option>
-	<option value="Rawalpindi" >Rawalpindi</option>
-	<option value="Sahiwal" >Sahiwal</option>
-	<option value="Sargodha" >Sargodha</option>
-	<option value="Sheikhupura" >Sheikhupura</option>
-	<option value="Shekhupura" >Shekhupura</option>
-	<option value="Sialkot" >Sialkot</option>
-	<option value="Toba Tek Singh" >Toba Tek Singh</option>
-	<option value="Vehari" >Vehari</option><optgroup title="Sindh" label="&raquo; Sindh"></optgroup>
-	<option value="Badin" >Badin</option>
-	<option value="Dadu" >Dadu</option>
-	<option value="Ghotki" >Ghotki</option>
-	<option value="Hyderabad" >Hyderabad</option>
-	<option value="Jacobabad" >Jacobabad</option><option value="Jamshoro" >Jamshoro</option><option value="Karachi" >Karachi</option><option value="Kashmore" >Kashmore</option><option value="Khairpur" >Khairpur</option><option value="Larkana" >Larkana</option><option value="Matiari" >Matiari</option><option value="Mirpur Khas" >Mirpur Khas</option><option value="Naushahro Feroze" >Naushahro Feroze</option><option value="Nawabshah" >Nawabshah</option><option value="Qambar Shahdadkot" >Qambar Shahdadkot</option><option value="Sanghar" >Sanghar</option><option value="Shikarpur" >Shikarpur</option><option value="Sukkur" >Sukkur</option><option value="Tando Allahyar" >Tando Allahyar</option><option value="Tando Muhammad Khan" >Tando Muhammad Khan</option><option value="Tharparkar" >Tharparkar</option><option value="Thatta" >Thatta</option><option value="Umerkot" >Umerkot</option></select>
-	<?php if(isset($cityError)) echo $cityError; ?>          
+	<option value="BHopal" >Bhopal</option>
+	<option value="Indore" >Indore</option>
+	<option value="Jabalpur" >Jabalpur</option>
+	<option value="Gwalior" >Gwalior</option>
+	<option value="Ujjain" >Ujjain</option>
+	<option value="Sagar" >Sagar</option>
+	<option value="Dewas" >Dewas</option>
+	<option value="Satna" >Satna</option>
+	<!-- <optgroup title="Balochistan" label="&raquo; Balochistan"></optgroup> -->
+	<option value="Ratlam" >Ratlam</option>
+	<option value="Rewa" >Rewa</option>
+	<option value="Katni" >Katni</option>
+	<option value="Singrouli" >Singrouli</option>
+	<option value="Burhanpur" >Burhanpur</option>
+	<option value="Morena" >Morena</option>
+	<option value="Khandwa" >Khandwa</option>
+	<option value="Bhind" >Bhind</option>
+	<option value="Chindiwara" >Chindiwara</option>
+	<option value="Guna" >Guna</option>
+	<option value="Shivpuri" >Shivpuri</option>
+	<option value="Vidisha" >Vidisha</option>
+	<option value="chatterPur" >chatterPur</option>
+	<option value="Damoh" >Damoh</option>
+	<option value="Madsaur" >Madsaur</option>
+	<option value="Khargone" >Khargone</option>
+	<option value="Neemach" >Neemach</option>
+	<option value="Pithampur" >Pithampur</option>
+	<option value="Narmadapuram" >Narmadapuram</option>
+	<option value="Itarsi" >Itarsi</option>
+	<option value="Sehore" >Sehore</option>
+	<option value="Betul" >Betul</option>
+	<option value="Seoni" >Seoni</option>
+	<option value="Datia" >Datia</option>
+	<option value="Nagda" >Nagda</option>
+	<option value="Shahdol" >Shahdol</option>
+	<option value="Harda" >Harda</option>
+</select>
+	     
 </div><!--city end-->
-			<?php if(isset($cityError)) echo $cityError; ?>
+			
             <div class="form-group">
               <label for="password">Password</label>
               <input type="password" name="password" value="" placeholder="Password" class="form-control" required pattern="{6,}">
@@ -607,7 +290,7 @@ box-shadow: 0px 2px 5px -2px rgba(89,89,89,0.95);
             <div class="form-group">
               <label for="password">Confirm Password</label>
               <input type="password" name="c_password" value="" placeholder="Confirm Password" class="form-control" required pattern="{6,}">
-			  <?php if(isset($passwordError)) echo $passwordError; ?>
+			
 			</div><!--End form-group-->
 			
             <div class="form-inline">
